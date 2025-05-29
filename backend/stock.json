@@ -1,0 +1,102 @@
+[
+  {
+    "id": "b001",
+    "stock": 80,
+    "costPrice": 300.0
+  },
+  {
+    "id": "b002",
+    "stock": 70,
+    "costPrice": 500.0
+  },
+  {
+    "id": "b003",
+    "stock": 65,
+    "costPrice": 600.0
+  },
+  {
+    "id": "b004",
+    "stock": 60,
+    "costPrice": 620.0
+  },
+  {
+    "id": "a001",
+    "stock": 10,
+    "costPrice": 280.0
+  },
+  {
+    "id": "a002",
+    "stock": 8,
+    "costPrice": 500.0
+  },
+  {
+    "id": "a003",
+    "stock": 6,
+    "costPrice": 320.0
+  },
+  {
+    "id": "a004",
+    "stock": 7,
+    "costPrice": 160.0
+  },
+  {
+    "id": "m001",
+    "stock": 5,
+    "costPrice": 1300.0
+  },
+  {
+    "id": "m002",
+    "stock": 5,
+    "costPrice": 1500.0
+  },
+  {
+    "id": "m003",
+    "stock": 5,
+    "costPrice": 1500.0
+  },
+  {
+    "id": "am01",
+    "stock": 6,
+    "costPrice": 650.0
+  },
+  {
+    "id": "am02",
+    "stock": 5,
+    "costPrice": 850.0
+  },
+  {
+    "id": "am03",
+    "stock": 4,
+    "costPrice": 1200.0
+  },
+  {
+    "id": "d001",
+    "stock": 10,
+    "costPrice": 900.0
+  },
+  {
+    "id": "d002",
+    "stock": 10,
+    "costPrice": 120.0
+  },
+  {
+    "id": "d003",
+    "stock": 10,
+    "costPrice": 40.0
+  },
+  {
+    "id": "p001",
+    "stock": 60,
+    "costPrice": 290.0
+  },
+  {
+    "id": "p002",
+    "stock": 55,
+    "costPrice": 450.0
+  },
+  {
+    "id": "p003",
+    "stock": 70,
+    "costPrice": 100.0
+  }
+]

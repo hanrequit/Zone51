@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Shopping Cart</h1>
+    <nav>
+      <a href="index.html">← Back to Store</a>
+    </nav>
+  </header>
+
+  <main id="cart-container"></main>
+
+  <footer>
+    <button onclick="checkout()">Proceed to Checkout</button>
+    <button onclick="clearCart()">Clear Cart</button>
+  </footer>
+
+  <script>
+    const BACKEND_URL = "https://itca-example-advanced-website-backend.onrender.com";
+    const cartContainer = document.getElementById("cart-container");
+
+    fetch(`${BACKEND_URL}/api/products`)
+      .then(res => res.json())
+      .then(products => showCart(products));
+
+    function showCart(products) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cartContainer.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+      }
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const product = products.find(p => p.id === item.id);
+        const subtotal = product.price * item.quantity;
+        total += subtotal;
+
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <h3>${product.name}</h3>
+          <p>Price: R${product.price.toFixed(2)}</p>
+          <label>
+            Quantity:
+            <input type="number" min="1" value="${item.quantity}" onchange="updateQuantity('${item.id}', this.value)">
+          </label>
+          <p>Subtotal: R${subtotal.toFixed(2)}</p>
+          <hr>
+        `;
+        cartContainer.appendChild(div);
+      });
+
+      const summary = document.createElement("div");
+      summary.innerHTML = `<h2>Total: R${total.toFixed(2)}</h2>`;
+      cartContainer.appendChild(summary);
+    }
+
+    function updateQuantity(id, qty) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        item.quantity = parseInt(qty);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+      }
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      location.reload();
+    }
+
+    function checkout() {
+      alert("Proceeding to checkout...");
+      window.location.href = "checkout.html";
+    }
+  </script>
+</body>
+</html>
