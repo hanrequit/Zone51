@@ -63,5 +63,14 @@ app.get("/api/report", (req, res) => {
   }, 0);
   res.json({ sales: sales.length, totalRevenue: totalRevenue.toFixed(2) });
 });
+const path = require("path");
 
+// Serve static files from the Frontend folder
+app.use(express.static(path.join(__dirname, "../Frontend")));
+
+// Handle all other routes (for direct access to HTML pages)
+app.get("*", (req, res) => {
+  const requestedFile = req.path === "/" ? "/index.html" : req.path;
+  res.sendFile(path.join(__dirname, "../Frontend", requestedFile));
+});
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
