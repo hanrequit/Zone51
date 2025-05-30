@@ -10,6 +10,11 @@
   --card-bg: #1f1f1f;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden; /* Lock scroll to avoid background shift */
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -83,11 +88,13 @@ footer {
   text-align: center;
 }
 
+/* Enhanced video background */
 video {
-  position: absolute;
+  position: fixed; /* changed from absolute to fixed */
   top: 0;
   left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index:-100;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -100;
 }
