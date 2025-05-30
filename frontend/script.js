@@ -1,5 +1,5 @@
 function addToCart(id) {
-  const BACKEND_URL = "https://zone51.onrender.com/";
+  const BACKEND_URL = "https://zone51.onrender.com";
 
   fetch(`${BACKEND_URL}/api/products`)
     .then(res => res.json())
