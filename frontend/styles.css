@@ -70,13 +70,24 @@ footer {
   padding: 1em;
   background-color: var(--card-bg);
 }
+
 @font-face {
   font-family: Codeca;
   src: url(assets/font/codega.ttf);
 }
+
 .titles {
   font-family: 'Codeca', 'Orbitron', sans-serif;
-  font-size: 6rem;
-  letter-spacing: 0.25em;
+  font-size: 5rem;
+  letter-spacing: 0.2em;
   text-align: center;
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index:-100;
 }
