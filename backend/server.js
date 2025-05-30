@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 // Load data at startup
-let products = JSON.parse(fs.readFileSync("products.json"));
-let sales = JSON.parse(fs.readFileSync("sales.json"));
-let stock = JSON.parse(fs.readFileSync("stock.json"));
+let products = JSON.parse(fs.readFileSync(path.join(__dirname, "products.json")));
+let sales = JSON.parse(fs.readFileSync(path.join(__dirname, "sales.json")));
+let stock = JSON.parse(fs.readFileSync(path.join(__dirname, "stock.json")));
 
 // GET products
 app.get("/api/products", (req, res) => {
@@ -65,12 +65,12 @@ app.get("/api/report", (req, res) => {
 });
 const path = require("path");
 
-// Serve static files from the Frontend folder
-app.use(express.static(path.join(__dirname, "../Frontend")));
+const frontendPath = path.join(__dirname, "..", "Frontend");
 
-// Handle all other routes (for direct access to HTML pages)
+app.use(express.static(frontendPath));
+
 app.get("*", (req, res) => {
   const requestedFile = req.path === "/" ? "/index.html" : req.path;
-  res.sendFile(path.join(__dirname, "../Frontend", requestedFile));
+  res.sendFile(path.join(frontendPath, requestedFile));
 });
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
