@@ -43,6 +43,10 @@ app.get('/api/report', (req, res) => {
   res.json({ totalSales: sales.length, totalRevenue });
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Zone51 backend API 👽');
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
