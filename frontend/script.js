@@ -1,5 +1,5 @@
 function addToCart(id) {
-  const BACKEND_URL = "https://itca-example-advanced-website-backend.onrender.com";
+  const BACKEND_URL = "https://zone51.onrender.com/";
 
   fetch(`${BACKEND_URL}/api/products`)
     .then(res => res.json())
@@ -34,7 +34,7 @@ function addToCart(id) {
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("product-container");
 
-  fetch("https://itca-example-advanced-website-backend.onrender.com/api/products")
+  fetch("https://zone51.onrender.com/api/products")
     .then(res => res.json())
     .then(products => {
       renderProducts(products);
