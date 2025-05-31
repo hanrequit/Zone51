@@ -47,15 +47,6 @@ function renderProducts(productList) {
   const container = document.getElementById("product-container");
   container.innerHTML = "";
 
-  // Back to Categories button
-  const backBtn = document.createElement("button");
-  backBtn.textContent = "← Back to Categories";
-  backBtn.style.marginBottom = "1em";
-  backBtn.addEventListener("click", () => {
-    renderCategories(window.allProducts);
-  });
-  container.appendChild(backBtn);
-
   productList.forEach(product => {
     const card = document.createElement("div");
     card.className = "product-card";
