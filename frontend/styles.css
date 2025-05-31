@@ -159,13 +159,13 @@ button {
 
 .footer {
   font-family: 'Codeca', 'Orbitron', sans-serif;
-  font-size: 11rem;
+  font-size: 25rem;
   letter-spacing: 0.125em;
   text-align: center;
   text-decoration: none;
   color: #00e0ff; 
-  border: 1px solid #00e0ff;  
-  padding: 7px 16px;
+  border: 21x solid #00e0ff;  
+  padding: auto;
   border-radius: 16px;
   transition: background 0.4s ease, transform 0.3s ease;
   box-shadow: 0 0 21px rgba(0, 224, 255, 0.8); 
