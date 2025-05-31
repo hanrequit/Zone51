@@ -1,6 +1,76 @@
-function addToCart(id) {
-  const BACKEND_URL = "https://zone51-backend.onrender.com";
+const BACKEND_URL = "https://zone51-backend.onrender.com";
 
+document.addEventListener("DOMContentLoaded", function () {
+  fetchProductsAndRenderCategories();
+});
+
+function fetchProductsAndRenderCategories() {
+  fetch(`${BACKEND_URL}/api/products`)
+    .then(res => res.json())
+    .then(products => {
+      window.allProducts = products; // Cache globally to avoid refetching
+      renderCategories(products);
+    })
+    .catch(error => {
+      console.error("Failed to load products:", error);
+      const container = document.getElementById("product-container");
+      container.innerHTML = "<p>Could not load product data.</p>";
+    });
+}
+
+function renderCategories(products) {
+  const container = document.getElementById("product-container");
+  container.innerHTML = "";
+
+  const categories = [...new Set(products.map(p => p.category))];
+
+  categories.forEach(category => {
+    const btn = document.createElement("button");
+    btn.className = "category-btn";
+    btn.setAttribute("data-category", category);
+
+    btn.innerHTML = `
+      <img src="assets/images/${formatImageName(category)}.png" alt="${category}" class="images" />
+      <span>${category}</span>
+    `;
+
+    btn.addEventListener("click", () => {
+      const filtered = products.filter(p => p.category === category);
+      renderProducts(filtered);
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+function renderProducts(productList) {
+  const container = document.getElementById("product-container");
+  container.innerHTML = "";
+
+  // Back to Categories button
+  const backBtn = document.createElement("button");
+  backBtn.textContent = "← Back to Categories";
+  backBtn.style.marginBottom = "1em";
+  backBtn.addEventListener("click", () => {
+    renderCategories(window.allProducts);
+  });
+  container.appendChild(backBtn);
+
+  productList.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <p><strong>R${product.price.toFixed(2)}</strong></p>
+      <button onclick="addToCart('${product.id}')">Add to Cart</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function addToCart(id) {
   fetch(`${BACKEND_URL}/api/products`)
     .then(res => res.json())
     .then(products => {
@@ -30,75 +100,15 @@ function addToCart(id) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("product-container");
-
-  fetch("https://zone51-backend.onrender.com/api/products")
-    .then(res => res.json())
-    .then(products => {
-      renderCategories(products);
-    })
-    .catch(error => {
-      console.error("Failed to load products:", error);
-      container.innerHTML = "<p>Could not load product data.</p>";
-    });
-});
-
-function renderProducts(productList) {
-  const container = document.getElementById("product-container");
-  container.innerHTML = "";
-  productList.forEach(product => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>${product.description}</p>
-      <p><strong>R${product.price.toFixed(2)}</strong></p>
-      <button onclick="addToCart('${product.id}')">Add to Cart</button>
-    `;
-    container.appendChild(card);
-  });
+// Helper function to format category names to image filenames
+function formatImageName(category) {
+  return category.toLowerCase()
+    .replace(/ & /g, '')    // remove " & "
+    .replace(/\s+/g, '')    // remove spaces
+    .replace(/[^\w]/g, ''); // remove special chars
 }
 
-function renderCategories(products) {
-  const container = document.getElementById("product-container");
-  container.innerHTML = "";
-
-  const categories = [...new Set(products.map(p => p.category))];
-
-  categories.forEach(category => {
-    const card = document.createElement("div");
-    card.className = "category-card";
-    card.innerText = category;
-    card.addEventListener("click", () => {
-      const filtered = products.filter(p => p.category === category);
-      renderProducts(filtered);
-    });
-    container.appendChild(card);
-  });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Star animation code (kept as you had it)
 const starsContainer = document.querySelector('.stars');
 
 function createStar() {
