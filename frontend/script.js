@@ -8,7 +8,7 @@ function fetchProductsAndRenderCategories() {
   fetch(`${BACKEND_URL}/api/products`)
     .then(res => res.json())
     .then(products => {
-      window.allProducts = products; // Cache globally to avoid refetching
+      window.allProducts = products;
       renderCategories(products);
     })
     .catch(error => {
@@ -51,11 +51,13 @@ function renderProducts(productList) {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>${product.description}</p>
-      <p><strong>R${product.price.toFixed(2)}</strong></p>
-      <button onclick="addToCart('${product.id}')">Add to Cart</button>
+      <div class="card-content">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <p><strong>R${product.price.toFixed(2)}</strong></p>
+      </div>
+      <button class="add-btn" onclick="addToCart('${product.id}')">Add to Cart</button>
     `;
     container.appendChild(card);
   });
@@ -91,15 +93,13 @@ function addToCart(id) {
     });
 }
 
-// Helper function to format category names to image filenames
 function formatImageName(category) {
   return category.toLowerCase()
-    .replace(/ & /g, '')    // remove " & "
-    .replace(/\s+/g, '')    // remove spaces
-    .replace(/[^\w]/g, ''); // remove special chars
+    .replace(/ & /g, '')
+    .replace(/\s+/g, '')
+    .replace(/[^\w]/g, '');
 }
 
-// Star animation code (kept as you had it)
 const starsContainer = document.querySelector('.stars');
 
 function createStar() {
