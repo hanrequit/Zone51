@@ -2,37 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zone 51</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/images/logo.ico" type="image/x-icon" />
-
 </head>
-
 <body>
   <div class="stars"></div>
-  <header>
-    <h1><a href="index.html" class="titles">Zone 51</a></h1>
-    <nav>
-      <ul class="nav-menu">
-        <li><a href="cart.html" class="button-link">🛒 Cart</a></li>
-      </ul>
-      <button id="themeToggle" class="lightmode">Toggle Mode</button>
-    </nav>
-  </header>
+<header>
+  <div class="logo font"><a href="index.html">Zone 51</a></div>
+  <div class="button-container">
+    <button class="cart"><a href="cart.html">🛒Cart button</a></button>
+    <button class="toggle">Toggle button (will be replaced later)</button>
+  </div>
+</header>
 
-  <main id="product-container">
-      <div class="category-buttons-container"> 
-        <!-- JavaScript fills data here -->
-      </div>  
+  <main>
+    <div id="product-container" class="product-grid">
+      <!-- JS dynamically injects content here -->
+    </div>
   </main>
 
-  <footer class="footer">
-    <p>Zone 51&copy; All rights reserved.</p>
+  <footer class="font">
+    <p>Zone 51&copy;2025 All rights reserved.</p>
   </footer>
 
-  <!-- Load scripts at the very end -->
-  <script src="theme-toggle.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
     "id": "b002",
     "name": "The Department of Truth: The Complete Conspiracy: Volume 1 - 5",
     "category": "Books",
-    "price": 750.0,
+    "price": 7500.0,
     "image": "assets/images/thedepartmentoftruthbooks.jpg",
     "description": "A shadowy agency manipulates reality by turning conspiracy theories into truth."
   },
@@ -19,7 +19,7 @@
     "id": "b003",
     "name": "Behind a Pale Horse: The Forbidden Edition",
     "category": "Books",
-    "price": 924.99,
+    "price": 724.99,
     "image": "assets/images/behindapalehorsebooks.jpg",
     "description": "A former naval officer exposes government secrets, alien cover-ups, and the New World Order."
   },
@@ -27,7 +27,7 @@
     "id": "b004",
     "name": "The Men Who Stare at Goats",
     "category": "Books",
-    "price": 924.99,
+    "price": 568.99,
     "image": "assets/images/themenwhostareatgoatsbooks.jpg",
     "description": "A secretive military unit, psychic warfare, and a goat that never stood a chance — the truth is stranger than fiction."
   },

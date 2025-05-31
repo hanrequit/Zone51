@@ -1,169 +1,215 @@
-@keyframes blink {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@font-face {
-  font-family: Codega;
-  src: url(assets/font/codega.ttf);
-}
-
+/* ===== General Layout ===== */
 body {
-  font-family: 'Poppins',Arial, Helvetica, sans-serif;
   margin: 0;
-  background: radial-gradient(circle at bottom, #0d0d0d, #000000);
-  color: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  transition: background 0.3s, color 0.3s;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: black;
 }
 
 header {
-  padding: 1rem;
-  background-color: #1f1f1f;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 
-header h1 {
-  margin: 0;
-  color: #00e0ff;
+header .button-container {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;       
+  gap: 10px;                              
+}
+
+/* ===== Buttons ===== */
+button {
+  box-shadow: 0 0 8px 2px #39FF14;
+  transition: box-shadow 0.3s ease-in-out;
+  background-color: transparent;
+  color: #39FF14;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #00ffff, #ff00ff, #39ff14);
+  border-image-slice: 1;
+  font-weight: bold;
+  text-shadow: 0 0 5px #39FF14;
   cursor: pointer;
-  font-size: 2.5rem;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px #00e0ff, 0 0 20px #7b00ff;
-  font-weight: 700;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-#product-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 2rem;
-  flex-grow: 1;
+button:hover {
+  box-shadow: 0 0 20px 6px #39FF14;
+  background-color: rgba(57, 255, 20, 0.1);
 }
 
-.category-btn {
-  background: transparent;
-  border: 2px solid #00e0ff;
-  padding: 1rem;
-  border-radius: 16px;
-  cursor: pointer;
+/* Specific button classes */
+.category-btn, .add-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: #f9f9f9;
-  transition: background-color 0.3s, transform 0.3s ease;
-  box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  width: auto; /* category buttons auto width */
 }
 
-.category-btn:hover {
-  background: linear-gradient(135deg, #00e0ff, #7b00ff);
-  color: #0d0d0d;
-  transform: scale(1.2) rotate(3deg);
-  box-shadow: 0 0 50px rgba(0, 224, 255, 1);
-}
-
-.category-btn .images {
-  max-width: 100px;
-  max-height: 100px;
-  margin-bottom: 1rem;
-}
-
-.product-card {
-  background-color: #1f1f1f;
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover {
+.category-btn:hover, .add-btn:hover {
   transform: scale(1.05);
 }
 
+/* ===== Product Grid ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 30px;
+  align-items: stretch;
+}
+
+/* ===== Product Card ===== */
+.product-card {
+  background-color: transparent;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #00ffff, #ff00ff, #39ff14);
+  border-image-slice: 1;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px #39ff14;
+}
+
+.product-card:hover {
+  background: linear-gradient(45deg, #00ffff33, #ff00ff33);
+  box-shadow: 0 0 20px #39ff14;
+}
+
 .product-card img {
+  background-color: transparent;
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 5px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.product-card h3 {
-  font-size: 1.4rem;
-  color: #00e0ff;
-  margin: 0.5rem 1rem 0;
-  font-weight: 600;
-  text-shadow: 0 0 5px #00e0ff;
-}
-
+.product-card h3,
 .product-card p {
-  margin: 0.5rem 1rem;
-  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+  margin: 5px 0;
+  color: #39FF14; 
+  text-shadow: 0 0 3px #000; 
 }
 
 .add-btn {
-  text-decoration: none;
-  color: #00e0ff;
-  border: 2px solid #00e0ff;
-  padding: 14px 20px;
-  border-radius: 16px;
-  font-size: 1rem;
-  transition: background 0.4s ease, transform 0.3s ease;
-  box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
-  display: inline-block;
-  cursor: pointer;
-  background: transparent;
-  margin: 1rem;
-}
-
-.add-btn:hover {
-  background: linear-gradient(135deg, #00e0ff, #7b00ff);
-  color: #0d0d0d;
-  transform: scale(1.2) rotate(3deg);
-  box-shadow: 0 0 50px rgba(0, 224, 255, 1);
-}
-
-footer {
-  background-color: #1f1f1f;
-  color: #f9f9f9;
-  text-align: center;
-  padding: 1rem;
   margin-top: auto;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
 }
 
+/* ===== Category Button Images ===== */
+.category-btn img.images {
+  background-color: #39FF14;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* ===== Logo Styles ===== */
+.logo a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #39FF14;
+  background: transparent;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #00ffff, #ff00ff, #39ff14);
+  border-image-slice: 1;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 0 5px #39FF14;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo a:hover {
+  background: linear-gradient(45deg, #00ffff33, #ff00ff33);
+  color: #ffffff;
+  box-shadow: 0 0 20px #39FF14;
+}
+
+.logo {
+  font-size: 76px;
+  font-family: "Codega", fantasy;
+}
+
+/* ===== Footer ===== */
+footer {
+  padding: 15px 20px;
+  color: #39FF14;
+  background: transparent;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #00ffff, #ff00ff, #39ff14);
+  border-image-slice: 1;
+  font-weight: bold;
+  text-shadow: 0 0 5px #39FF14;
+  text-align: center;
+  letter-spacing: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===== Stars Background ===== */
 .stars {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
   height: 100vh;
-  pointer-events: none;
+  width: 100vw;
   overflow: hidden;
-  z-index: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .star {
   position: absolute;
   width: 2px;
   height: 2px;
-  background-color: white;
+  background: white;
   border-radius: 50%;
-  animation: blink linear infinite;
+  opacity: 0.8;
+  animation: twinkle 10s linear forwards;
 }
 
-
-
-.titles {
-  display: block;
-  text-align: left;
-  margin: 0 0 5px 5px auto;
-  font-family: 'Codega', Arial, Helvetica, sans-serif;
+/* ===== Fonts ===== */
+@font-face {
+  font-family: Codega;
+  src: url(assets/font/codega.ttf);
 }
 
+.font {
+  font-family: "Codega", fantasy;
+}
+
+/* ===== Animations ===== */
+@keyframes twinkle {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

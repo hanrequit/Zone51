@@ -8,7 +8,7 @@ function fetchProductsAndRenderCategories() {
   fetch(`${BACKEND_URL}/api/products`)
     .then(res => res.json())
     .then(products => {
-      window.allProducts = products; // Cache globally
+      window.allProducts = products;
       renderCategories(products);
     })
     .catch(error => {
@@ -104,15 +104,13 @@ function addToCart(id) {
   alert(`${product.name} added to cart`);
 }
 
-// Format category names to match image filenames
 function formatImageName(category) {
   return category.toLowerCase()
-    .replace(/ & /g, '')    // remove " & "
-    .replace(/\s+/g, '')    // remove spaces
-    .replace(/[^\w]/g, ''); // remove special chars
+    .replace(/ & /g, '')
+    .replace(/\s+/g, '')
+    .replace(/[^\w]/g, '');
 }
 
-// Star animation
 const starsContainer = document.querySelector('.stars');
 
 function createStar() {
