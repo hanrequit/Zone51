@@ -146,6 +146,20 @@ button {
   background: transparent;
 }
 
+.titles {
+    text-decoration: none;
+  color: #00e0ff; 
+  border: 2px solid #00e0ff;  
+  padding: 14px 40px;
+  border-radius: 16px;
+  font-size: 1.4rem;
+  transition: background 0.4s ease, transform 0.3s ease;
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.8); 
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+}
+
 a:hover, button:hover {
   background: linear-gradient(135deg, #00e0ff, #7b00ff); 
   color: #0d0d0d; 
