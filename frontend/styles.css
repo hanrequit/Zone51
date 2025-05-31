@@ -170,8 +170,6 @@ a:hover, button:hover {
   display: block; 
   cursor: pointer;
   background: transparent;
-  position: fixed; 
-  bottom: 0; 
   width: 100%;
 }
 
@@ -194,10 +192,11 @@ a:hover, button:hover {
 
 /* Container for products or categories - flexbox side by side */
 #product-container {
-  display: flex;
-  flex-wrap: wrap;     
-  gap: 1rem;            
-  justify-content: center; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem; 
 }
 
 /* Category buttons */
