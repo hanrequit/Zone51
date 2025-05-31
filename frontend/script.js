@@ -37,12 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("https://zone51-backend.onrender.com/api/products")
     .then(res => res.json())
     .then(products => {
-      renderProducts(products);
+      renderCategories(products); 
     })
     .catch(error => {
       console.error("Failed to load products:", error);
       container.innerHTML = "<p>Could not load product data.</p>";
     });
+});
 
   function renderProducts(productList) {
     container.innerHTML = "";
