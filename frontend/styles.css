@@ -180,22 +180,40 @@ a:hover, button:hover {
   box-shadow: 0 0 50px rgba(0, 224, 255, 1); 
 }
 
+.images:hover {
+  cursor: pointer;
+}
+
+.category-btn {
+  position: relative;      
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em 1em;      
+  border: 2px solid #00e0ff;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.category-btn:hover {
+  background: linear-gradient(135deg, #00e0ff, #7b00ff);
+  color: #0d0d0d;
+  transform: scale(1.2) rotate(3deg);
+  box-shadow: 0 0 50px rgba(0, 224, 255, 1);
+}
+
 .images {
+  display: block;           
   width: auto;
   height: auto;
   min-width: 100px;
   max-width: 250px;
   min-height: 100px;
   max-height: 250px;
-
-}
-
-.images:hover {
-  cursor: pointer;
-}
-
-.category-btn {
-  display: flex; 
-  flex-direction: column; 
-  align-items: center;
+  margin-bottom: 0.5em;
+  object-fit: contain;      
 }
