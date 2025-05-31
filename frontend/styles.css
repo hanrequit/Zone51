@@ -132,7 +132,7 @@ body {
   }
 }
 
-a, button {
+button {
   text-decoration: none;
   color: #00e0ff; 
   border: 2px solid #00e0ff;  
@@ -148,7 +148,7 @@ a, button {
 
 a:hover, button:hover {
   background: linear-gradient(135deg, #00e0ff, #7b00ff); 
-  color: #0d0d0d; /* ✨ HOVER TEXT COLOR */
+  color: #0d0d0d; 
   transform: scale(1.2) rotate(3deg);
   box-shadow: 0 0 50px rgba(0, 224, 255, 1); 
 }
