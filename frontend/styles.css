@@ -184,3 +184,13 @@ a:hover, button:hover {
   transform: scale(1.2) rotate(3deg);
   box-shadow: 0 0 50px rgba(0, 224, 255, 1); 
 }
+
+.images {
+  width: auto;
+  height: auto;
+  min-width: 100px;
+  max-width: 250px;
+  min-height: 100px;
+  max-height: 250px;
+  
+}
