@@ -1,10 +1,4 @@
 :root {
-  --bg: #ffffff;
-  --text: #111111;
-  --card-bg: #f3f3f3;
-}
-
-[data-theme="dark"] {
   --bg: #121212;
   --text: #f9f9f9;
   --card-bg: #1f1f1f;
@@ -12,9 +6,12 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: var(--bg);
+  min-height: 100vh;    
+  overflow-x: hidden;   
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at bottom, #0d0d0d, #000000);
   color: var(--text);
+  position: relative;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -76,19 +73,13 @@ footer {
   src: url(assets/font/codega.ttf);
 }
 
-
+/* Reset and basics */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  min-height: 100vh;    
-  overflow-x: hidden;   
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at bottom, #0d0d0d, #000000);
-  position: relative;
-}
+
 .stars {
   position: absolute;
   width: 100%;
@@ -124,6 +115,7 @@ body {
   }
 }
 
+/* Buttons */
 button {
   text-decoration: none;
   color: #00e0ff; 
@@ -137,6 +129,15 @@ button {
   cursor: pointer;
   background: transparent;
 }
+
+a:hover, button:hover {
+  background: linear-gradient(135deg, #00e0ff, #7b00ff); 
+  color: #0d0d0d; 
+  transform: scale(1.2) rotate(3deg);
+  box-shadow: 0 0 50px rgba(0, 224, 255, 1); 
+}
+
+/* Titles */
 .titles {
   font-family: 'Codeca', 'Orbitron', sans-serif;
   font-size: 5rem;
@@ -152,9 +153,10 @@ button {
   background: transparent;
 }
 
+/* Footer */
 .footer {
   font-family: 'Codeca', 'Orbitron', sans-serif;
-  font-size: 1.2rem; /* 🔽 Much more readable */
+  font-size: 1.2rem;
   letter-spacing: 0.05em;
   text-align: center;
   text-decoration: none;
@@ -173,24 +175,40 @@ button {
   width: 100%;
 }
 
-a:hover, button:hover {
-  background: linear-gradient(135deg, #00e0ff, #7b00ff); 
-  color: #0d0d0d; 
-  transform: scale(1.2) rotate(3deg);
-  box-shadow: 0 0 50px rgba(0, 224, 255, 1); 
+/* Images */
+.images {
+  display: block;           
+  width: auto;
+  height: auto;
+  min-width: 100px;
+  max-width: 150px;
+  min-height: 100px;
+  max-height: 150px;
+  margin-bottom: 0.5em;
+  object-fit: contain;      
 }
 
 .images:hover {
   cursor: pointer;
 }
 
+/* Container for products or categories - flexbox side by side */
+#product-container {
+  display: flex;
+  flex-wrap: wrap;     
+  gap: 1rem;            
+  justify-content: center; 
+}
+
+/* Category buttons */
 .category-btn {
   position: relative;      
   z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5em 1em;      
+  width: 150px;            
+  padding: 1rem;
   border: 2px solid #00e0ff;
   border-radius: 16px;
   background: transparent;
@@ -206,14 +224,8 @@ a:hover, button:hover {
   box-shadow: 0 0 50px rgba(0, 224, 255, 1);
 }
 
-.images {
-  display: block;           
-  width: auto;
+.category-btn img {
+  max-width: 100px;
   height: auto;
-  min-width: 100px;
-  max-width: 250px;
-  min-height: 100px;
-  max-height: 250px;
-  margin-bottom: 0.5em;
-  object-fit: contain;      
+  margin-bottom: 0.5rem;
 }
