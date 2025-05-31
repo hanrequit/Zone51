@@ -159,19 +159,23 @@ button {
 
 .footer {
   font-family: 'Codeca', 'Orbitron', sans-serif;
-  font-size: 25rem;
-  letter-spacing: 0.125em;
+  font-size: 1.2rem; /* 🔽 Much more readable */
+  letter-spacing: 0.05em;
   text-align: center;
   text-decoration: none;
   color: #00e0ff; 
-  border: 21x solid #00e0ff;  
-  padding: auto;
+  border: 2px solid #00e0ff; /* 🔧 Fixed typo (21x → 2px) */
+  padding: 1rem;
+  margin-top: 2rem;
   border-radius: 16px;
   transition: background 0.4s ease, transform 0.3s ease;
-  box-shadow: 0 0 21px rgba(0, 224, 255, 0.8); 
-  display: inline-block;
+  box-shadow: 0 0 12px rgba(0, 224, 255, 0.6); 
+  display: block; /* Stretches across, nice for footers */
   cursor: pointer;
   background: transparent;
+  position: fixed; 
+  bottom: 0; 
+  width: 100%;
 }
 
 a:hover, button:hover {
