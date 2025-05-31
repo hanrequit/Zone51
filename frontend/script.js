@@ -30,14 +30,13 @@ function addToCart(id) {
     });
 }
 
-// ⬇️ DOMContentLoaded handles rendering only
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("product-container");
 
   fetch("https://zone51-backend.onrender.com/api/products")
     .then(res => res.json())
     .then(products => {
-      renderCategories(products); 
+      renderCategories(products);
     })
     .catch(error => {
       console.error("Failed to load products:", error);
@@ -45,25 +44,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-  function renderProducts(productList) {
-    container.innerHTML = "";
-    productList.forEach(product => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <p><strong>R${product.price.toFixed(2)}</strong></p>
-        <button onclick="addToCart('${product.id}')">Add to Cart</button>
-      `;
-      container.appendChild(card);
+function renderProducts(productList) {
+  const container = document.getElementById("product-container");
+  container.innerHTML = "";
+  productList.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <p><strong>R${product.price.toFixed(2)}</strong></p>
+      <button onclick="addToCart('${product.id}')">Add to Cart</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderCategories(products) {
+  const container = document.getElementById("product-container");
+  container.innerHTML = "";
+
+  const categories = [...new Set(products.map(p => p.category))];
+
+  categories.forEach(category => {
+    const card = document.createElement("div");
+    card.className = "category-card";
+    card.innerText = category;
+    card.addEventListener("click", () => {
+      const filtered = products.filter(p => p.category === category);
+      renderProducts(filtered);
     });
-  }
-
- 
-});
-
+    container.appendChild(card);
+  });
+}
 
 
 
