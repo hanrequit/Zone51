@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(res => res.json())
     .then(products => {
       renderProducts(products);
-      setupCategoryFiltering(products);
     })
     .catch(error => {
       console.error("Failed to load products:", error);
@@ -61,16 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function setupCategoryFiltering(products) {
-    document.querySelectorAll(".nav-menu a[data-category]").forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const category = e.target.dataset.category;
-        const filtered = products.filter(p => p.category === category);
-        renderProducts(filtered);
-      });
-    });
-  }
+ 
 });
 
 
