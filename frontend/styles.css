@@ -1,6 +1,16 @@
-/* styles.css */
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@font-face {
+  font-family: Codega;
+  src: url(assets/font/codega.ttf);
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins',Arial, Helvetica, sans-serif;
   margin: 0;
   background: radial-gradient(circle at bottom, #0d0d0d, #000000);
   color: #f9f9f9;
@@ -14,7 +24,7 @@ body {
 header {
   padding: 1rem;
   background-color: #1f1f1f;
-  text-align: center;
+  display: flex;
 }
 
 header h1 {
@@ -148,15 +158,12 @@ footer {
   animation: blink linear infinite;
 }
 
-@keyframes blink {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
+
 
 .titles {
   display: block;
   text-align: left;
   margin: 0 0 5px 5px auto;
-  
+  font-family: 'Codega', Arial, Helvetica, sans-serif;
 }
+
