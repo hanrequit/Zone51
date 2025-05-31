@@ -6,8 +6,11 @@
   <title>Zone 51</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="assets/images/logo.ico" type="image/x-icon" />
+
 </head>
+
 <body>
+  <div class="stars"></div>
   <header>
     <h1><a href="index.html" class="titles">Zone 51</a></h1>
     <nav>
@@ -31,40 +34,6 @@
   <footer>
     <p>Zone 51&copy; All rights reserved.</p>
   </footer>
-
-
-<div class="field">
-	<div id="source"></div>
-	<div id="orb"></div>
-</div>
-
-<div class="panel">
-	
-	<div class="controls">
-		<div class="orb-control orb-control-stop" id="orb-control"></div>
-		<div class="control-description" id="control-description">Stop the orb and drag it to a new position</div>
-	</div>
-
-	<div id="status">
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-	</div>
-
-	<div>
-		<label for="force">Choose a Force</label>
-		<select name="force" id="force">
-      <option value="proportional">proportional to distance from source</option>
-      <option value="inverse">inversely proportional to distance from source</option>
-      <option value="inverseSquared">inverse squared to distance from source</option>
-		</select>
-	</div>
-
-</div>
-
 
   <!-- Load scripts at the very end -->
   <script src="theme-toggle.js"></script>
